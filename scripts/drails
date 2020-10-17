@@ -1,0 +1,1 @@
+docker-compose exec web rails "$@" 2> /dev/null

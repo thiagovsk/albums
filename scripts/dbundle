@@ -1,0 +1,7 @@
+#!/bin/bash
+# Create .env in the case it doesn't exist
+if ! [ -f ./.env ]; then
+  touch .env
+fi
+
+docker-compose exec web bundle "$@" 2> /dev/null
