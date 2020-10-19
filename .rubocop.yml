@@ -17,3 +17,23 @@ AllCops:
 require:
   - rubocop-rspec
   - rubocop-rails
+
+Style/Documentation:
+  Enabled: false
+
+Metrics/MethodLength:
+  CountComments: false
+  Max: 50
+  Exclude:
+    - 'spec/**/*.rb'
+    - 'features/**/*.rb'
+
+Metrics/BlockLength:
+  CountComments: false
+  Max: 50
+  Exclude:
+    - 'spec/**/*.rb'
+    - 'features/**/*.rb'
+
+RSpec/EmptyExampleGroup:
+  Enabled: false
