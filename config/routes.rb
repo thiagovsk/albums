@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :albums
   resources :users, only: [:new, :create]
 
   get '/login'     => 'sessions#new'

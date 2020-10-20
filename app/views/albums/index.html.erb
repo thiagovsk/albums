@@ -1,0 +1,31 @@
+<h1>Albums</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Artist</th>
+      <th scope="col">Album</th>
+      <th scope="col">Year</th>
+      <th colspan="6"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @albums.each_with_index do |album, index| %>
+      <tr>
+        <th scope="row"><%= index + 1%></th>
+        <td><%= album.artist %></td>
+        <td><%= album.album %></td>
+        <td><%= album.year %></td>
+        <td><%= link_to 'Show', album %></td>
+        <td><%= link_to 'Edit', edit_album_path(album) %></td>
+        <td><%= link_to 'Destroy', album, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Album', new_album_path %>
+
