@@ -1,24 +1,20 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Run the app
 
-Things you may want to cover:
+You need docker and docker-compose:
 
-* Ruby version
+```
+docker-compose up -d
+./scripts/drails db:create db:migrate
+```
+And visit localhost:3000
 
-* System dependencies
 
-* Configuration
+To run tests/rubocop
 
-* Database creation
+```
+./scripts/dbundle exec rspec
+./scripts/dbundle exec rubocop
+```
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
