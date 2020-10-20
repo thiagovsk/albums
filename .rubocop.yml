@@ -37,3 +37,6 @@ Metrics/BlockLength:
 
 RSpec/EmptyExampleGroup:
   Enabled: false
+
+RSpec/AnyInstance:
+  Enabled: false

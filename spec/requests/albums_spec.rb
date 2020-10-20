@@ -1,12 +1,18 @@
 require 'rails_helper'
 
 RSpec.describe '/albums', type: :request do
+  let(:current_user) { create(:user) }
+
   let(:valid_attributes) do
     attributes_for(:album)
   end
 
   let(:invalid_attributes) do
     { album: nil, year: nil, artist: nil }
+  end
+
+  before do
+    allow_any_instance_of(AlbumsController).to receive(:current_user).and_return(current_user)
   end
 
   describe 'GET /index' do
@@ -109,6 +115,17 @@ RSpec.describe '/albums', type: :request do
       album = Album.create! valid_attributes
       delete album_url(album)
       expect(response).to redirect_to(albums_url)
+    end
+
+    context 'when user have not access' do
+      let(:current_user) { create(:user, role: 'user') }
+
+      it 'raise error with CanCan::AccessDenied' do
+        album = Album.create! valid_attributes
+        expect do
+          delete album_url(album)
+        end.to raise_error(an_instance_of(CanCan::AccessDenied))
+      end
     end
   end
 end
